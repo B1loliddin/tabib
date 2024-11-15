@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "28220411711",
+    "project_id": "tabib-7c8ee",
+    "storage_bucket": "tabib-7c8ee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28220411711:android:d69ff5f84c21f540cccd8a",
+        "android_client_info": {
+          "package_name": "com.rishala.tabib"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE73JKaGGfgPEfzO6W-b5K28S_SsFRN9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
