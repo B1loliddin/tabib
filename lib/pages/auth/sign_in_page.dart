@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:tabib/services/auth_service.dart';
 import 'package:tabib/widgets/custom_auth_text_form_field.dart';
 
 class SignInPage extends StatefulWidget {
@@ -13,6 +14,7 @@ class _SignInPageState extends State<SignInPage> {
   final formKey = GlobalKey<FormState>();
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
+  final authService = AuthService();
 
   @override
   void initState() {
@@ -44,6 +46,37 @@ class _SignInPageState extends State<SignInPage> {
 
   void _textFieldUnFocus() => FocusScope.of(context).unfocus();
 
+  void _signInButtonOnPressed() {
+    if (formKey.currentState!.validate()) {
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+
+      authService.signIn(
+        email: email,
+        password: password,
+      );
+    } else {
+      // showShackBar(context, 'Form is invalid!');
+    }
+  }
+
+  // String? _emailValidator(String? value) {
+  //   final regExp = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
+  //   final bool isCorrect = value?.contains(regExp) ?? false;
+  //
+  //   if (!isCorrect) return 'Correct your email!';
+  //
+  //   return null;
+  // }
+  //
+  // String? _passwordValidator(String? value) {
+  //   final bool isCorrect = value?.isEmpty ?? true;
+  //
+  //   if (isCorrect) return 'Password needs to be filled!';
+  //
+  //   return null;
+  // }
+
   @override
   Widget build(BuildContext context) {
     final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
@@ -62,16 +95,19 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               /// #
               Form(
+                key: formKey,
                 child: Column(
                   children: [
                     CustomAuthTextFormField(
                       hintText: 'Email',
                       controller: _emailController,
+                      // validator: _emailValidator,
                     ),
                     SizedBox(height: 20),
                     CustomAuthTextFormField(
                       hintText: 'Password',
                       controller: _passwordController,
+                      // validator: _passwordValidator,
                     ),
                   ],
                 ),
@@ -80,7 +116,7 @@ class _SignInPageState extends State<SignInPage> {
 
               /// #
               ElevatedButton(
-                onPressed: () {},
+                onPressed: _signInButtonOnPressed,
                 child: Text('Sign In'),
               ),
               SizedBox(height: 20),

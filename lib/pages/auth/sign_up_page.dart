@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:tabib/services/auth_service.dart';
 import 'package:tabib/widgets/custom_auth_text_form_field.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -15,6 +16,7 @@ class _SignUpPageState extends State<SignUpPage> {
   late final TextEditingController _lastNameController;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
+  final authService = AuthService();
 
   @override
   void initState() {
@@ -50,6 +52,59 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void _textFieldUnFocus() => FocusScope.of(context).unfocus();
 
+  void _signUpButtonOnPressed() {
+    if (formKey.currentState!.validate()) {
+      final firstName = _firstNameController.text.trim();
+      final lastName = _lastNameController.text.trim();
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+
+      authService.signUp(
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      );
+
+      Navigator.pushNamed(context, 'otp_verification_page');
+    } else {
+      // showShackBar(context, 'Form is invalid!');
+    }
+  }
+
+  // String? _firstNameValidator(String? value) {
+  //   final bool isCorrect = value?.isEmpty ?? true;
+  //
+  //   if (isCorrect) return 'First name needs to be filled!';
+  //
+  //   return null;
+  // }
+  //
+  // String? _lastNameValidator(String? value) {
+  //   final bool isCorrect = value?.isEmpty ?? true;
+  //
+  //   if (isCorrect) return 'Last name needs to be filled!';
+  //
+  //   return null;
+  // }
+  //
+  // String? _emailValidator(String? value) {
+  //   final regExp = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
+  //   final bool isCorrect = value?.contains(regExp) ?? false;
+  //
+  //   if (!isCorrect) return 'Correct your email!';
+  //
+  //   return null;
+  // }
+  //
+  // String? _passwordValidator(String? value) {
+  //   final bool isCorrect = value?.isEmpty ?? true;
+  //
+  //   if (isCorrect) return 'Password needs to be filled!';
+  //
+  //   return null;
+  // }
+
   @override
   Widget build(BuildContext context) {
     final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
@@ -70,26 +125,31 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: [
                   /// #
                   Form(
+                    key: formKey,
                     child: Column(
                       children: [
                         CustomAuthTextFormField(
                           hintText: 'First Name',
                           controller: _firstNameController,
+                          // validator: _firstNameValidator,
                         ),
                         SizedBox(height: 20),
                         CustomAuthTextFormField(
                           hintText: 'Last Name',
                           controller: _lastNameController,
+                          // validator: _lastNameValidator,
                         ),
                         SizedBox(height: 20),
                         CustomAuthTextFormField(
                           hintText: 'Email',
                           controller: _emailController,
+                          // validator: _emailValidator,
                         ),
                         SizedBox(height: 20),
                         CustomAuthTextFormField(
                           hintText: 'Password',
                           controller: _passwordController,
+                          // validator: _passwordValidator,
                         ),
                       ],
                     ),
@@ -98,7 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   /// #
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: _signUpButtonOnPressed,
                     child: Text('Sign Up'),
                   ),
                   SizedBox(height: 20),
