@@ -8,6 +8,7 @@ class AuthService {
   static const String baseUrl = 'http://127.0.0.1:8000/api/v1';
   static const String apiAuthRegister = '/auth/register/';
   static const String apiAuthTokenCreate = '/auth/token/create/';
+  static const String apiAuthActivateAccount = '/auth/activate-account/';
 
   Future<void> signUp({
     required String firstName,
@@ -59,6 +60,23 @@ class AuthService {
       } else {}
     } catch (e, s) {
       debugPrint('Sign In Error: $e');
+    }
+  }
+
+  Future<void> verifyOtp(int activationCode, String email) async {
+    try {
+      final Uri url = Uri.parse('$baseUrl$apiAuthActivateAccount');
+      final body = {
+        'activation_code': activationCode,
+        'email': email,
+      };
+
+      final response = await http.post(url, body: body);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+      } else {}
+    } catch (e, s) {
+      debugPrint('OTP Verification: $e');
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:tabib/pages/auth/otp_verification_page.dart';
 import 'package:tabib/services/auth_service.dart';
 import 'package:tabib/widgets/custom_auth_text_form_field.dart';
 
@@ -66,7 +67,12 @@ class _SignUpPageState extends State<SignUpPage> {
         password: password,
       );
 
-      Navigator.pushNamed(context, 'otp_verification_page');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => OtpVerificationPage(email: email),
+        ),
+      );
     } else {
       // showShackBar(context, 'Form is invalid!');
     }

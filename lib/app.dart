@@ -11,12 +11,12 @@ class Tabib extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'sign_up_page',
+      initialRoute: 'otp_verification_page',
       routes: {
         // '/': (context) => SplashPage(),
         'sign_up_page': (context) => SignUpPage(),
         'sign_in_page': (context) => SignInPage(),
-        'otp_verification_page': (context) => OtpVerificationPage(),
+        'otp_verification_page': (context) => OtpVerificationPage(email: ''),
       },
     );
   }
