@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tabib/pages/auth/otp_verification_page.dart';
+import 'package:tabib/providers/current_user_provider.dart';
 import 'package:tabib/services/auth_service.dart';
 import 'package:tabib/widgets/custom_auth_text_form_field.dart';
 
@@ -66,6 +68,13 @@ class _SignUpPageState extends State<SignUpPage> {
         email: email,
         password: password,
       );
+
+      context.read<CurrentUserProvider>().changeFirstLastNameEmailPassword(
+            firstName,
+            lastName,
+            email,
+            password,
+          );
 
       Navigator.push(
         context,

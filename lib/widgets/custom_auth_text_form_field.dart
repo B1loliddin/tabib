@@ -16,8 +16,8 @@ class CustomAuthTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      textInputAction: TextInputAction.next,
       validator: validator,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         hintText: hintText,
         border: const OutlineInputBorder(),
