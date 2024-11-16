@@ -129,7 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text('Sign Up Page'),
+          title: const Text('Sign Up Page'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -148,19 +148,19 @@ class _SignUpPageState extends State<SignUpPage> {
                           controller: _firstNameController,
                           // validator: _firstNameValidator,
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         CustomAuthTextFormField(
                           hintText: 'Last Name',
                           controller: _lastNameController,
                           // validator: _lastNameValidator,
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         CustomAuthTextFormField(
                           hintText: 'Email',
                           controller: _emailController,
                           // validator: _emailValidator,
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         CustomAuthTextFormField(
                           hintText: 'Password',
                           controller: _passwordController,
@@ -169,24 +169,24 @@ class _SignUpPageState extends State<SignUpPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   /// #
                   ElevatedButton(
                     onPressed: _signUpButtonOnPressed,
-                    child: Text('Sign Up'),
+                    child: const Text('Sign Up'),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   /// #
                   RichText(
                     text: TextSpan(
                       text: 'Already have an account? ',
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                       children: [
                         TextSpan(
                           text: 'Sign In',
-                          style: TextStyle(color: Colors.blue),
+                          style: const TextStyle(color: Colors.blue),
                           recognizer: TapGestureRecognizer()
                             ..onTap = _navigateToSignInPage,
                         ),

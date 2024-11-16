@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tabib/models/user_model.dart';
 import 'package:tabib/providers/current_user_provider.dart';
+import 'package:tabib/widgets/custom_user_specifications_text_form_field.dart';
 
 class HeightWeightGenderPage extends StatefulWidget {
   const HeightWeightGenderPage({super.key});
@@ -76,12 +77,12 @@ class _HeightWeightGenderPageState extends State<HeightWeightGenderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Height Weight Gender'),
+        title: const Text('Height Weight Gender'),
       ),
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             /// #
             Form(
@@ -93,85 +94,51 @@ class _HeightWeightGenderPageState extends State<HeightWeightGenderPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       /// #
-                      SizedBox(
-                        width: 100,
-                        height: 90,
-                        child: TextFormField(
-                          textAlign: TextAlign.center,
-                          controller: _heightController,
-                          textInputAction: TextInputAction.next,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(3),
-                            FilteringTextInputFormatter.digitsOnly,
-                          ],
-                          validator: (String? value) {
-                            if (value?.isEmpty ?? true) {
-                              return 'Fill it!';
-                            }
-
-                            return null;
-                          },
-                        ),
+                      CustomUserSpecificationsTextFormField(
+                        controller: _heightController,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(3),
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
 
                       /// #
-                      Text(
+                      const Text(
                         'cm',
                         style: TextStyle(fontSize: 24),
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
 
                   /// #
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       /// #
-                      SizedBox(
-                        width: 100,
-                        height: 90,
-                        child: TextFormField(
-                          textAlign: TextAlign.center,
-                          controller: _weightController,
-                          textInputAction: TextInputAction.next,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true,
-                          ),
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(4),
-                            FilteringTextInputFormatter.allow(
-                              RegExp(r'^\d*\.?\d{0,2}'),
-                            ),
-                          ],
-                          validator: (String? value) {
-                            if (value?.isEmpty ?? true) {
-                              return 'Fill it!';
-                            }
-
-                            return null;
-                          },
+                      CustomUserSpecificationsTextFormField(
+                        controller: _heightController,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
                         ),
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(4),
+                          FilteringTextInputFormatter.allow(
+                            RegExp(r'^\d*\.?\d{0,2}'),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
 
                       /// #
-                      Text(
+                      const Text(
                         'kg',
                         style: TextStyle(fontSize: 24),
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),
@@ -183,7 +150,8 @@ class _HeightWeightGenderPageState extends State<HeightWeightGenderPage> {
                 GestureDetector(
                   onTap: () => _selectDate(context),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 10),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(5),
@@ -191,21 +159,21 @@ class _HeightWeightGenderPageState extends State<HeightWeightGenderPage> {
                     child: Text(
                       _selectedDate == null
                           ? 'Select Date'
-                          : '${_selectedDate!.day}-${_selectedDate!.month}-${_selectedDate!.year}',
-                      style: TextStyle(fontSize: 16, color: Colors.black),
+                          : '${_selectedDate.day}-${_selectedDate.month}-${_selectedDate.year}',
+                      style: const TextStyle(fontSize: 16, color: Colors.black),
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
 
                 /// #
-                Text(
+                const Text(
                   'birthday',
                   style: TextStyle(fontSize: 18),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             /// #
             Row(
@@ -240,12 +208,12 @@ class _HeightWeightGenderPageState extends State<HeightWeightGenderPage> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             /// #
             ElevatedButton(
               onPressed: _submitButtonOnPressed,
-              child: Text('Submit'),
+              child: const Text('Submit'),
             ),
           ],
         ),

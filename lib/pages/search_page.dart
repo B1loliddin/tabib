@@ -48,15 +48,15 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Page'),
+        title: const Text('Search Page'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
-            /// #
+            /// #search field
             TextFormField(
               controller: _searchController,
               decoration: const InputDecoration(
@@ -66,10 +66,10 @@ class _SearchPageState extends State<SearchPage> {
             ),
             const SizedBox(height: 10),
 
-            /// #
+            /// #doctors
             Expanded(
               child: _filteredItems.isEmpty
-                  ? Center(
+                  ? const Center(
                       child: Text('No results found'),
                     )
                   : ListView.builder(

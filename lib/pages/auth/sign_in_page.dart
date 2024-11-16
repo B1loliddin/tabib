@@ -86,7 +86,7 @@ class _SignInPageState extends State<SignInPage> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text('Sign In Page'),
+          title: const Text('Sign In Page'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -103,7 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                       controller: _emailController,
                       // validator: _emailValidator,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomAuthTextFormField(
                       hintText: 'Password',
                       controller: _passwordController,
@@ -112,24 +112,24 @@ class _SignInPageState extends State<SignInPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               /// #
               ElevatedButton(
                 onPressed: _signInButtonOnPressed,
-                child: Text('Sign In'),
+                child: const Text('Sign In'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               /// #
               RichText(
                 text: TextSpan(
                   text: 'Don\'t have an account? ',
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                   children: [
                     TextSpan(
                       text: 'Sign Up',
-                      style: TextStyle(color: Colors.blue),
+                      style: const TextStyle(color: Colors.blue),
                       recognizer: TapGestureRecognizer()
                         ..onTap = _navigateToSignUpPage,
                     ),

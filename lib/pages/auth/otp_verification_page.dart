@@ -106,7 +106,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
 
           /// #otp
           Form(
@@ -152,7 +152,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
               ],
             ),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
 
           /// #submit
           ElevatedButton(

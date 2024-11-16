@@ -31,7 +31,7 @@ class AuthService {
       } else {
         debugPrint('Status Code:${response.statusCode}');
       }
-    } catch (e, s) {
+    } catch (e) {
       debugPrint('Sign Up Error: $e');
     }
   }
@@ -57,7 +57,7 @@ class AuthService {
 
         debugPrint('Auth Token: ${response.body}');
       } else {}
-    } catch (e, s) {
+    } catch (e) {
       debugPrint('Sign In Error: $e');
     }
   }
@@ -74,7 +74,7 @@ class AuthService {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
       } else {}
-    } catch (e, s) {
+    } catch (e) {
       debugPrint('OTP Verification: $e');
     }
   }

@@ -9,33 +9,38 @@ import 'package:tabib/firebase_options.dart';
 import 'package:tabib/providers/current_user_provider.dart';
 import 'package:tabib/services/firebase_service.dart';
 
+void serviceLocator() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final firebaseService = FirebaseService();
+
+  /// #permission request
+  firebaseService.requestPermission();
+
+  /// #initialization
+  firebaseService.initializeLocalNotifications();
+
+  /// #showing notifications
+  FirebaseMessaging.onBackgroundMessage(
+    firebaseService.firebaseBackgroundMessagingHandler,
+  );
+
+  /// #subscirption to particular topic
+  firebaseService.subscribeToTopic('daily-notifications');
+
+  /// #receiving notifications
+  firebaseService.receiveNotifications();
+}
+
 void main() {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
 
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
-
-      final firebaseService = FirebaseService();
-
-      /// #permission request
-      firebaseService.requestPermission();
-
-      /// #initialization
-      firebaseService.initializeLocalNotifications();
-
-      /// #showing notifications
-      FirebaseMessaging.onBackgroundMessage(
-        firebaseService.firebaseBackgroundMessagingHandler,
-      );
-
-      /// #subscirption to particular topic
-      firebaseService.subscribeToTopic('daily-notifications');
-
-      /// #receiving notifications
-      firebaseService.receiveNotifications();
+      /// #set up
+      serviceLocator();
 
       runApp(
         MultiProvider(

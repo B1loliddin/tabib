@@ -42,7 +42,7 @@ class _AllPagesState extends State<AllPages> {
         onPageChanged: (int value) {
           setState(() => _selectedPage = value);
         },
-        children: [
+        children: const [
           HomePage(),
           SearchPage(),
         ],
@@ -54,7 +54,7 @@ class _AllPagesState extends State<AllPages> {
           _pageController.jumpToPage(_selectedPage);
           setState(() {});
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

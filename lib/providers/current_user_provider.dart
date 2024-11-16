@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tabib/models/user_model.dart';
 
 class CurrentUserProvider extends ChangeNotifier {
-  UserModel _userModel = UserModel(
+  final UserModel _userModel = UserModel(
     id: '',
     firstName: '',
     lastName: '',
