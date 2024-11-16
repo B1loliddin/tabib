@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabib/pages/call_page.dart';
 import 'package:tabib/pages/home_page.dart';
 import 'package:tabib/pages/search_page.dart';
 
@@ -45,6 +46,7 @@ class _AllPagesState extends State<AllPages> {
         children: const [
           HomePage(),
           SearchPage(),
+          CallPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -62,6 +64,10 @@ class _AllPagesState extends State<AllPages> {
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.call),
+            label: 'Call Page',
           ),
         ],
       ),

@@ -3,7 +3,7 @@ import 'package:tabib/models/user_model.dart';
 
 class CurrentUserProvider extends ChangeNotifier {
   final UserModel _userModel = UserModel(
-    id: '',
+    id: '0',
     firstName: '',
     lastName: '',
     email: '',

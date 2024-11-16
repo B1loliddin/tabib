@@ -1,4 +1,18 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Add the Android Gradle plugin dependency
+        classpath 'com.android.tools.build:gradle:8.0.2'
+        // Add Firebase or other plugins, if required
+        classpath 'com.google.gms:google-services:4.3.15'
+    }
+}
+
 allprojects {
+    ext.kotlin_version = '1.8.0'
     repositories {
         google()
         mavenCentral()

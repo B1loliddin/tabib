@@ -4,6 +4,7 @@ import 'package:tabib/pages/auth/height_weight_gender_page.dart';
 import 'package:tabib/pages/auth/otp_verification_page.dart';
 import 'package:tabib/pages/auth/sign_in_page.dart';
 import 'package:tabib/pages/auth/sign_up_page.dart';
+import 'package:tabib/pages/call_page.dart';
 import 'package:tabib/pages/home_page.dart';
 import 'package:tabib/pages/search_page.dart';
 
@@ -24,6 +25,7 @@ class Tabib extends StatelessWidget {
         'all_pages': (context) => const AllPages(),
         'home_page': (context) => const HomePage(),
         'search_page': (context) => const SearchPage(),
+        'call_page': (context) => const CallPage(),
       },
     );
   }
