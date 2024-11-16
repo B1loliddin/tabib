@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   static const String baseUrl = 'http://127.0.0.1:8000/api/v1';
@@ -51,10 +50,10 @@ class AuthService {
       final response = await http.post(url, body: body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        final prefs = await SharedPreferences.getInstance();
-        final String authToken = jsonDecode(response.body);
-
-        await prefs.setString('auth_token', authToken);
+        // final prefs = await SharedPreferences.getInstance();
+        // final String authToken = jsonDecode(response.body);
+        //
+        // await prefs.setString('auth_token', authToken);
 
         debugPrint('Auth Token: ${response.body}');
       } else {}
